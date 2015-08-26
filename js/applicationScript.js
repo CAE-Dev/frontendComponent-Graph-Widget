@@ -56,28 +56,46 @@ var init = function() {
 
 // setGraph
 var setGraph = function(graph){
+  graph = $.parseJSON(graph);
+  graph.nodes = $.parseJSON(graph.nodes);
+  graph.links = $.parseJSON(graph.links);
+  links = graph.links;
+  nodes = graph.nodes;
+  lastNodeId = nodes.length - 1;
+  initGraph();
+  restart();
 }
 
 
 // sendGraph
 var sendGraph = function(graph){
-  var graph = "initialized";
+  graph = getGraph(); // we don't process intent data
+  graph = JSON.stringify(graph);
   client.sendIntent("RETURN_GRAPH", graph);
 }
 
 
 // createNode
 var createNode = function(videoDetails){
+  videoDetails = $.parseJSON(videoDetails);
+  node = {id: ++lastNodeId, description: videoDetails[0], thumbnail: videoDetails[1], url: videoDetails[2]};
+  // not the nicest appearance idea but works for the moment
+  node.x = 100;
+  node.y = 100;
+  nodes.push(node);
+  // restart graph drawing
+  restart();
 }
 
 
 // sendPlaybackVideoRequest
 var sendPlaybackVideoRequest = function(videoDetails){
-  var videoDetails = "initialized";
+  videoDetails = JSON.stringify(videoDetails);
   client.sendIntent("PLAYBACK_VIDEO", videoDetails);
 }
 
 
 $(document).ready(function() {
   init();
+  initGraph(); // initialize at startup
 });

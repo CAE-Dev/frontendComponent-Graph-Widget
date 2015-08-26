@@ -81,7 +81,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <!-- inter widget communication library import -->
   <script type="text/javascript" src="http://CAE-Community-Application-Editor.github.io/frontendComponent-Graph-Widget/js/lib/iwc.js"></script>
   <!-- additional widget specific imports (put your own imports here as well) -->
-
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://CAE-Community-Application-Editor.github.io/frontendComponent-Graph-Widget/js/lib/graph.js"></script>
   <!-- import the client library -->
   <script type="text/javascript" src="http://CAE-Community-Application-Editor.github.io/frontendComponent-Graph-Widget/js/lib/las2peerWidgetLibrary.js"></script>
   <!-- import application script -->
@@ -94,7 +95,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   <div class="container" id="main-content">
   
     <div id='graph'></div>
-  
+    <br>
+    <p>
+    Drag a line between two nodes for a (directed) edge.
+    Select nodes or edges by clicking.<br>
+    Press <b>CTRL</b> and click a node to move it around.
+    <b>DEL</b> removes a selected node or edge.<br>
+    When an edge is selected, change direction by pressing <b>L</b>eft, <b>R</b>ight or <b>B</b>idirectional.
+    </p>
   </div>
 
 </body>
